@@ -22,7 +22,10 @@
      cursor: pointer;
      color: gold;
    }
-   
+    .cart-message {
+      margin-top: 10px;
+      color: green;
+    }
    
   </style>
 </head>
@@ -78,7 +81,7 @@
                  alt="Spaghetti carbonara with fresh parsley garnish on a white plate">
             <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">Gongura chickenBiryani
           </div>
-          <div class="food-card p-6">
+          <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Gongura chickenBiryani</h3>
             <p class="text-gray-600 mb-4">Delicious and Spicy.</p>
             <div class="flex items-center justify-between">
@@ -86,17 +89,16 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>25 min</span>
               </div>
-                <div class="quantity-controls" style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+               <div class="quantity-controls">
                  <button class="decrease">-</button>
                  <span class="quantity">0</span>
                  <button class="increase">+</button>
-              </div>
+               </div>
 
                <button class="add-to-cart" style="background-color: orange; color: white; border: none; padding: 6px 12px; border-radius: 5px;">
                   Add to cart
               </button>
-
-            <div class="cart-message" style="margin-top: 10px; color: green;"></div> 
+                 <div class="cart-message"</div> 
                <div class="star-rating" data-rating="0">
                   <span class="star" data-value="1">☆</span>
                   <span class="star" data-value="2">☆</span>
@@ -1032,48 +1034,35 @@
   });
 </script>
   <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const increaseBtns = document.querySelectorAll(".increase");
-    const decreaseBtns = document.querySelectorAll(".decrease");
-    const addToCartBtns = document.querySelectorAll(".add-to-cart");
+    let quantity = 0;
 
-    increaseBtns.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const parent = btn.closest(".food-card");
-        const quantitySpan = parent.querySelector(".quantity");
-        let count = parseInt(quantitySpan.innerText);
-        if (count < 5) {
-          quantitySpan.innerText = count + 1;
-        }
-      });
+    const quantityDisplay = document.querySelector('.quantity');
+    const increaseBtn = document.querySelector('.increase');
+    const decreaseBtn = document.querySelector('.decrease');
+    const addToCartBtn = document.querySelector('.add-to-cart');
+    const cartMessage = document.querySelector('.cart-message');
+
+    increaseBtn.addEventListener('click', () => {
+      if (quantity < 5) {
+        quantity++;
+        quantityDisplay.textContent = quantity;
+      }
     });
 
-     decreaseBtns.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const parent = btn.closest(".food-card");
-        const quantitySpan = parent.querySelector(".quantity");
-        let count = parseInt(quantitySpan.innerText);
-        if (count > 0) {
-          quantitySpan.innerText = count - 1;
-        }
-      });
+    decreaseBtn.addEventListener('click', () => {
+      if (quantity > 0) {
+        quantity--;
+        quantityDisplay.textContent = quantity;
+      }
     });
 
-     addToCartBtns.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const parent = btn.closest(".food-card");
-        const quantitySpan = parent.querySelector(".quantity");
-        const messageDiv = parent.querySelector(".cart-message");
-        const quantity = parseInt(quantitySpan.innerText);
-
-        if (quantity > 0) {
-          messageDiv.innerText = ${quantity} item(s) added to cart!;
-        } else {
-          messageDiv.innerText = "Please select at least 1 item.";
-        }
-      });
+   addToCartBtn.addEventListener('click', () => {
+      if (quantity > 0) {
+        cartMessage.textContent ='added to cart!';
+      } else {
+        cartMessage.textContent = "Please select quantity first.";
+      }
     });
-  });
-</script>
+  </script>
 </body>
 </html>
