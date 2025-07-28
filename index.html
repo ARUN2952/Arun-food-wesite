@@ -89,17 +89,17 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>25 min</span>
               </div>
+
+              
                <div class="quantity-controls">
                  <button class="decrease">-</button>
                  <span class="quantity">0</span>
                  <button class="increase">+</button>
                </div>
 
-               <button class="add-to-cart" style="background-color: orange; color: white; border: none; padding: 6px 12px; border-radius: 5px;">
-                  Add to cart
+               <button class="text-white bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full transition">
+                Add to cart
               </button>
-
-              
                  <div class="cart-message"</div> 
                <div class="star-rating" data-rating="0">
                   <span class="star" data-value="1">☆</span>
@@ -128,6 +128,13 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>40 min</span>
               </div>
+
+                <div class="quantity-controls">
+                 <button class="decrease">-</button>
+                 <span class="quantity">0</span>
+                 <button class="increase">+</button>
+               </div>
+              
               <button class="text-white bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full transition">
                 Add to cart
               </button>
@@ -158,6 +165,13 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>30 min</span>
               </div>
+
+                <div class="quantity-controls">
+                 <button class="decrease">-</button>
+                 <span class="quantity">0</span>
+                 <button class="increase">+</button>
+               </div>
+              
               <button class="text-white bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full transition">
                 Add to cart
               </button>
@@ -1060,7 +1074,7 @@
 
    addToCartBtn.addEventListener('click', () => {
       if (quantity > 0) {
-        cartMessage.textContent ='added to cart!';
+        cartMessage.textContent ='Added to cart!';
       } else {
         cartMessage.textContent = "Please select quantity first.";
       }
