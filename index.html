@@ -132,7 +132,13 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>40 min</span>
               </div>
-                
+                 <div class="quantity-controls">
+               <button class="decrease">-</button>
+               <span class="quantity">0</span>
+               <button class="increase">+</button>
+              </div>
+             <button class="add-to-cart">Add to Cart</button>
+           <div class="cart-message"></div>
               <div class="star-rating" data-rating="0">
                   <span class="star" data-value="1">☆</span>
                   <span class="star" data-value="2">☆</span>
@@ -1035,14 +1041,15 @@
     });
   });
 </script>
-  <script>
-  let quantity = 0;
+ <script>
+  document.querySelectorAll('.product').forEach(product => {
+    let quantity = 0;
 
-    const quantityDisplay = document.querySelector('.quantity');
-    const increaseBtn = document.querySelector('.increase');
-    const decreaseBtn = document.querySelector('.decrease');
-    const addToCartBtn = document.querySelector('.add-to-cart');
-    const cartMessage = document.querySelector('.cart-message');
+    const quantityDisplay = product.querySelector('.quantity');
+    const increaseBtn = product.querySelector('.increase');
+    const decreaseBtn = product.querySelector('.decrease');
+    const addToCartBtn = product.querySelector('.add-to-cart');
+    const cartMessage = product.querySelector('.cart-message');
 
     increaseBtn.addEventListener('click', () => {
       if (quantity < 5) {
@@ -1058,14 +1065,14 @@
       }
     });
 
-   addToCartBtn.addEventListener('click', () => {
+    addToCartBtn.addEventListener('click', () => {
       if (quantity > 0) {
-        cartMessage.textContent ='added to cart!';
+        cartMessage.textContent = Added ${quantity} item(s) to cart!;
       } else {
-        cartMessage.textContent = "Please select quantity first.";
+        cartMessage.textContent = 'Please select quantity first.';
       }
     });
-  </script>
-
+  });
+</script>
 </body>
 </html>
