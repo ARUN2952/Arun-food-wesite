@@ -1032,35 +1032,44 @@
   });
 </script>
   <script>
-   document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".food-card").forEach(card => {
-      const decreaseBtn = card.querySelector(".decrease");
-      const increaseBtn = card.querySelector(".increase");
-      const quantitySpan = card.querySelector(".quantity");
-      const addToCartBtn = card.querySelector(".add-to-cart");
-      const cartMsg = card.querySelector(".cart-message");
+  document.addEventListener("DOMContentLoaded", function () {
+    const increaseBtns = document.querySelectorAll(".increase");
+    const decreaseBtns = document.querySelectorAll(".decrease");
+    const addToCartBtns = document.querySelectorAll(".add-to-cart");
 
-      let quantity = 0;
-
-      increaseBtn.addEventListener("click", () => {
-        if (quantity < 5) {
-          quantity++;
-          quantitySpan.textContent = quantity;
+    increaseBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const parent = btn.closest(".food-card");
+        const quantitySpan = parent.querySelector(".quantity");
+        let count = parseInt(quantitySpan.innerText);
+        if (count < 5) {
+          quantitySpan.innerText = count + 1;
         }
       });
+    });
 
-      decreaseBtn.addEventListener("click", () => {
-        if (quantity > 0) {
-          quantity--;
-          quantitySpan.textContent = quantity;
+    decreaseBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const parent = btn.closest(".food-card");
+        const quantitySpan = parent.querySelector(".quantity");
+        let count = parseInt(quantitySpan.innerText);
+        if (count > 0) {
+          quantitySpan.innerText = count - 1;
         }
       });
+    });
 
-      addToCartBtn.addEventListener("click", () => {
+    addToCartBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const parent = btn.closest(".food-card");
+        const quantitySpan = parent.querySelector(".quantity");
+        const messageDiv = parent.querySelector(".cart-message");
+        const quantity = parseInt(quantitySpan.innerText);
+
         if (quantity > 0) {
-          cartMsg.textContent = 🛒 Added ${quantity} item(s) to cart;
+          messageDiv.innerText = ${quantity} item(s) added to cart!;
         } else {
-          cartMsg.textContent = ❗ Please select quantity;
+          messageDiv.innerText = "Please select at least 1 item.";
         }
       });
     });
