@@ -1006,23 +1006,21 @@
       // Mobile menu toggle would go here in a complete implementation
     });
   </script>
-  <script>
-    <script>
-  document.querySelectorAll('.star-rating').forEach(rating => {
-    const stars = rating.querySelectorAll('.star');
+   <script>
+      document.querySelectorAll('.star-rating').forEach(rating => {
+       const stars = rating.querySelectorAll('.star');
 
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        const value = star.getAttribute('data-value');
-        rating.setAttribute('data-rating', value);
+         stars.forEach(star => {
+           star.addEventListener('click', () => {
+            const value = star.getAttribute('data-value');
+             rating.setAttribute('data-rating', value);
 
-        stars.forEach(s => {
-          s.textContent = s.getAttribute('data-value') <= value ? '⭐' : '☆';
+             stars.forEach(s => {
+               s.textContent = s.getAttribute('data-value') <= value ? '⭐' : '☆';
         });
       });
     });
   });
 </script>
-  </script>
 </body>
 </html>
