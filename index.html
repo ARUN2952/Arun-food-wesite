@@ -22,20 +22,7 @@
      cursor: pointer;
      color: gold;
    }
-    .quantity-controls button {
-  padding: 4px 10px;
-  font-size: 18px;
-  background-color: #ff9900;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.quantity-controls .quantity {
-  font-weight: bold;
-  font-size: 16px;
-}
+   
    
   </style>
 </head>
@@ -99,24 +86,17 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>25 min</span>
               </div>
-                <div class="quantity-controls" style="display: flex; align-items: center; gap: 10px;">
+                <div class="quantity-controls" style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
                  <button class="decrease">-</button>
                  <span class="quantity">0</span>
                  <button class="increase">+</button>
               </div>
 
-              <button class="text-white bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full transition">
-                Add to cart
-              </button>
-              <div class="cart-message" style="margin-top: 10px; color: green;"></div>
-              </div>
-              <div class="star-rating" data-rating="0">
-                  <span class="star" data-value="1">☆</span>
-                  <span class="star" data-value="2">☆</span>
-                  <span class="star" data-value="3">☆</span>
-                  <span class="star" data-value="4">☆</span>
-                  <span class="star" data-value="5">☆</span>
-              </div>
+          <button class="add-to-cart" style="background-color: orange; color: white; border: none; padding: 6px 12px; border-radius: 5px;">
+           Add to cart
+         </button>
+
+          <div class="cart-message" style="margin-top: 10px; color: green;"></div> 
             </div>
           </div>
         </div>
