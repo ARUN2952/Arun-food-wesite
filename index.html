@@ -22,6 +22,20 @@
      cursor: pointer;
      color: gold;
    }
+    .quantity-controls button {
+  padding: 4px 10px;
+  font-size: 18px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity-controls .quantity {
+  font-weight: bold;
+  font-size: 16px;
+}
    
   </style>
 </head>
@@ -94,6 +108,8 @@
               <button class="text-white bg-amber-500 hover:bg-amber-600 px-4 py-2 rounded-full transition">
                 Add to cart
               </button>
+              <div class="cart-message" style="margin-top: 10px; color: green;"></div>
+              </div>
               <div class="star-rating" data-rating="0">
                   <span class="star" data-value="1">☆</span>
                   <span class="star" data-value="2">☆</span>
@@ -1024,6 +1040,41 @@
              stars.forEach(s => {
                s.textContent = s.getAttribute('data-value') <= value ? '⭐' : '☆';
         });
+      });
+    });
+  });
+</script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".food-card").forEach(card => {
+      const decreaseBtn = card.querySelector(".decrease");
+      const increaseBtn = card.querySelector(".increase");
+      const quantitySpan = card.querySelector(".quantity");
+      const addToCartBtn = card.querySelector(".add-to-cart");
+      const cartMsg = card.querySelector(".cart-message");
+
+      let quantity = 0;
+
+      increaseBtn.addEventListener("click", () => {
+        if (quantity < 5) {
+          quantity++;
+          quantitySpan.textContent = quantity;
+        }
+      });
+
+      decreaseBtn.addEventListener("click", () => {
+        if (quantity > 0) {
+          quantity--;
+          quantitySpan.textContent = quantity;
+        }
+      });
+
+      addToCartBtn.addEventListener("click", () => {
+        if (quantity > 0) {
+          cartMsg.textContent = 🛒 Added ${quantity} item(s) to cart;
+        } else {
+          cartMsg.textContent = ❗ Please select quantity;
+        }
       });
     });
   });
