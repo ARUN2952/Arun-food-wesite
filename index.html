@@ -89,7 +89,16 @@
                 <ion-icon name="time-outline" class="mr-1"></ion-icon>
                 <span>25 min</span>
               </div>
-              
+              <div class="quantity-controls">
+               <button class="decrease">-</button>
+               <span class="quantity">0</span>
+               <button class="increase">+</button>
+              </div>
+
+               <button class="add-to-cart">Add to Cart</button>
+
+           <div class="cart-message"></div>
+         </div>
                <div class="star-rating" data-rating="0">
                   <span class="star" data-value="1">☆</span>
                   <span class="star" data-value="2">☆</span>
@@ -1020,8 +1029,7 @@
     });
   });
 </script>
-  <script>
-    let quantity = 0;
+  let quantity = 0;
 
     const quantityDisplay = document.querySelector('.quantity');
     const increaseBtn = document.querySelector('.increase');
@@ -1045,11 +1053,12 @@
 
    addToCartBtn.addEventListener('click', () => {
       if (quantity > 0) {
-        cartMessage.textContent ='Added to cart!';
+        cartMessage.textContent ='added to cart!';
       } else {
         cartMessage.textContent = "Please select quantity first.";
       }
     });
   </script>
+
 </body>
 </html>
